@@ -1,0 +1,26 @@
+[
+    {
+        "userId": 1,
+        "name": "Hemansi",
+        "contactNo": 1139538980,
+        "email": "hemansi13@gmail.com",
+        "password": "$2b$10$I0kEA3lcTcB6whnYtYb9neDuf7ufRjfZMvpmjVEsPRrRvNldyqzJy",
+        "role": "admin"
+    },
+    {
+        "userId": 2,
+        "name": "Hemansi",
+        "contactNo": 1129538980,
+        "email": "hemansi23@gmail.com",
+        "password": "$2b$10$Hf0t/YRwc7LbZml0xpyiXeOZ6uHwTIIauveL7ZpTuXjwUX8AlQKiC",
+        "role": "user"
+    },
+    {
+        "userId": 3,
+        "name": "Hemansi",
+        "contactNo": 1129138980,
+        "email": "hemansi213@gmail.com",
+        "password": "$2b$10$LapkNxvp8WhCxqgclgTWTu7lyNGHuzDE4NtJjm057CXTiLFvvKucy",
+        "role": "user"
+    }
+]
