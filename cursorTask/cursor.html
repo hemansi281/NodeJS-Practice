@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        .cursor {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgb(58, 92, 164);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div></div> -->
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+        const cursors = {};
+
+
+        socket.on('connect', () => {
+            console.log(socket.id)
+        })
+
+        document.addEventListener('mousemove', function (event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            console.log(mouseX, mouseY)
+            socket.emit('cursorMove', { x: mouseX, y: mouseY })
+        });
+
+        socket.on('cursorUpdate', ({ x, y, id }) => {
+            console.log(x, y)
+
+            let cursor = cursors[id];
+            // console.log(cursor)
+            if (!cursor) {
+                cursor = document.createElement("div");
+                cursor.classList.add("cursor");
+                document.body.appendChild(cursor);
+                cursors[id] = cursor;
+            }
+            cursor.style.left = `${x}px`;
+            cursor.style.top = `${y}px`;
+            // console.log(cursor)
+            // console.log(cursors)
+        })
+
+        socket.on('removeCursor', (id) => {
+            if (cursors[id]) {
+                let cursor = cursors[id]
+                cursor.remove();
+                delete cursors[id];
+            }
+            // console.log(cursor)
+            console.log(cursors)
+        })
+    </script>
+</body>
+
+</html>
