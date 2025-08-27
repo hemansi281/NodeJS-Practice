@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+  <h2>JSONP</h2>
+
+  <script>
+    function handleUserData(data) {
+      console.log("Data :", data);
+    }
+  </script>
+
+  <script src="http://localhost:3000/data?callback=handleUserData"></script>
+</body>
+</html>

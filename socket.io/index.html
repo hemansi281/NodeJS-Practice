@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>socket</h2>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script>
+        /* For namespace /orders */
+        const nsp = io('/orders');
+        // const usp = io('/users');
+
+        const socket = io({
+            auth: {
+                token: 'abc'
+            }
+        });
+        socket.on("connect", () => {
+            console.log("Connected with ID:", socket.id);
+        });
+
+        socket.on('event', (callback) => {
+            // console.log(arg)
+            callback({ status: 'ok' })
+        })
+
+        let count = 0;
+        // setInterval(() => {
+        //     socket.volatile.emit("ping", ++count);
+        // }, 1000);.
+
+        socket.emit('demo','first');
+        socket.emit('demo','second');
+        socket.emit('any','heyyyy')
+
+        // nsp.emit('ns1','Namespace argument')
+    </script>
+</body>
+
+</html>
